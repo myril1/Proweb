@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Service</title>
+</head>
+<body>
+    <h1>Welcome to My Service</h1>
+    <p>This is a simple web application.</p>
+
+    <script>
+        // Faites une requête GET à l'URL de votre backend
+        fetch('http://localhost:5000/')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('hello').innerText = data;
+            })
+            .catch(error => {
+                console.error('Une erreur s\'est produite:', error);
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myrile-flask
+  labels:
+    app: myrile-flask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myrile-flask
+  template:
+    metadata:
+      labels:
+        app: myrile-flask
+    spec:
+      containers:
+        - image: amide/myrile-flask
+          imagePullPolicy: IfNotPresent
+          name: app-flask
+          ports:
+            - containerPort: 5000
+          env:
+            - name: FLASK_ENV
+              value: "production"
+            - name: MYSQL_HOST
+              value: "mysql-service"  # Nom du service MySQL pour la connexion
+            - name: MYSQL_PORT
+              value: "3306"  # Port exposé par le service MySQL
+

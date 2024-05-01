@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myrile-ingress
+spec:
+  rules:
+    - host: myrile.info
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: myrile-flask-service
+                port:
+                  number: 5000
+
